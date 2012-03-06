@@ -332,6 +332,13 @@ function AddConfigurations(proj, strProjectName)
 				config.ATLMinimizesCRunTimeLibraryUsage = true;
 			}
 
+			var WizardVersion = wizard.FindSymbol('WIZARD_VERSION');
+			if(WizardVersion >= 10.0)
+			{
+				config.IntermediateDirectory += '\\';
+				config.OutputDirectory += '\\';
+			}
+
 			if(wizard.FindSymbol("WTL_USE_VIEW") && wizard.FindSymbol("WTL_COMBO_VIEW_TYPE") == "WTL_VIEWTYPE_HTML")
 				config.UseOfATL = useATLDynamic;
 
