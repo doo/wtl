@@ -3046,7 +3046,7 @@ public:
 	static CBrushHandle PASCAL GetHalftoneBrush()
 	{
 		HBRUSH halftoneBrush = NULL;
-		WORD grayPattern[8];
+		WORD grayPattern[8] = { 0 };
 		for(int i = 0; i < 8; i++)
 			grayPattern[i] = (WORD)(0x5555 << (i & 1));
 		HBITMAP grayBitmap = CreateBitmap(8, 8, 1, 1, &grayPattern);
@@ -3673,8 +3673,8 @@ public:
 // DIBINFO16 - To avoid color table problems in WinCE we only create this type of Dib
 struct DIBINFO16 // a BITMAPINFO with 2 additional color bitfields
 {
-    BITMAPINFOHEADER    bmiHeader;
-    RGBQUAD             bmiColors[3];
+	BITMAPINFOHEADER bmiHeader;
+	RGBQUAD bmiColors[3];
 
 	DIBINFO16(SIZE size) 
 	{
