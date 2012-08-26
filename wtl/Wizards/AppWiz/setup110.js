@@ -9,7 +9,7 @@
 // the terms of this license. You must not remove this notice, or
 // any other, from this software.
 
-// Setup program for the WTL App Wizard for VC++ 11.0
+// Setup program for the WTL App Wizard for VC++ 11.0 (VS2012)
 
 main();
 
