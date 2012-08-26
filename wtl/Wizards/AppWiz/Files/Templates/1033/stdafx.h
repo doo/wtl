@@ -21,26 +21,41 @@
 #define _ATL_APARTMENT_THREADED
 
 [!endif]
-[!if WTL_USE_SDK_ATL3]
-// This project was generated for VC++ 2005 Express and ATL 3.0 from Platform SDK.
+[!if WTL_USE_EXTERNAL_ATL]
+// This project was generated for VC++ Express and external ATL from Platform SDK or DDK.
 // Comment out this line to build the project with different versions of VC++ and ATL.
-#define _WTL_SUPPORT_SDK_ATL3
+#define _WTL_SUPPORT_EXTERNAL_ATL
 
-// Support for VS2005 Express & SDK ATL
-#ifdef _WTL_SUPPORT_SDK_ATL3
-  #define _CRT_SECURE_NO_DEPRECATE
-  #pragma conform(forScope, off)
-  #pragma comment(linker, "/NODEFAULTLIB:atlthunk.lib")
-#endif // _WTL_SUPPORT_SDK_ATL3
+// Support for VC++ Express & external ATL
+#ifdef _WTL_SUPPORT_EXTERNAL_ATL
+  #include <atldef.h>
+
+  #if (_ATL_VER < 0x0800)
+    #define _CRT_SECURE_NO_DEPRECATE
+    #pragma conform(forScope, off)
+    #pragma comment(linker, "/NODEFAULTLIB:atlthunk.lib")
+  #endif
+#endif // _WTL_SUPPORT_EXTERNAL_ATL
 
 [!endif]
 #include <atlbase.h>
-[!if WTL_USE_SDK_ATL3]
+[!if WTL_USE_EXTERNAL_ATL]
 
-// Support for VS2005 Express & SDK ATL
-#ifdef _WTL_SUPPORT_SDK_ATL3
-  namespace ATL
-  {
+// Support for VC++ Express & external ATL
+#ifdef _WTL_SUPPORT_EXTERNAL_ATL
+  #if (_ATL_VER >= 0x0800)
+    // for _stdcallthunk
+    #include <atlstdthunk.h>
+
+    // for #pragma prefast
+    #ifndef _PREFAST_
+      #pragma warning(disable:4068)
+    #endif
+
+    #pragma comment(lib, "atlthunk.lib")
+  #else
+    namespace ATL
+    {
 	inline void * __stdcall __AllocStdCallThunk()
 	{
 		return ::HeapAlloc(::GetProcessHeap(), 0, sizeof(_stdcallthunk));
@@ -50,8 +65,9 @@
 	{
 		::HeapFree(::GetProcessHeap(), 0, p);
 	}
-  };
-#endif // _WTL_SUPPORT_SDK_ATL3
+    };
+  #endif
+#endif // _WTL_SUPPORT_EXTERNAL_ATL
 
 [!endif]
 #include <atlapp.h>

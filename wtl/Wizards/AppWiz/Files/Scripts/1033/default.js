@@ -30,7 +30,7 @@ function OnFinish(selProj, selObj)
 			// Use ATL3 from SDK for VS2005 Express
 			if(wizard.FindSymbol("VC_EXPRESS"))
 			{
-				wizard.AddSymbol("WTL_USE_SDK_ATL3", true);
+				wizard.AddSymbol("WTL_USE_EXTERNAL_ATL", true);
 			}
 		}
 
