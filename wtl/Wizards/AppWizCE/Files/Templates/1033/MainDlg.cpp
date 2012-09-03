@@ -36,7 +36,7 @@ BOOL [!output WTL_MAINDLG_CLASS]::PreTranslateMessage(MSG* pMsg)
 
 BOOL [!output WTL_MAINDLG_CLASS]::OnIdle()
 {
-    UIUpdateChildWindows();
+	UIUpdateChildWindows();
 	return FALSE;
 }
 

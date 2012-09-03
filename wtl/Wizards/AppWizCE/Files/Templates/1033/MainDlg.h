@@ -43,7 +43,7 @@ public:
 [!else]
 	virtual BOOL OnIdle()
 	{
-        UIUpdateChildWindows();
+		UIUpdateChildWindows();
 		return FALSE;
 	}
 [!endif]
