@@ -1725,8 +1725,8 @@ to use a version of ATL that ships with the Platform SDK.</font></p>
 <p style=margin:0in><font face="Arial" size="2">The WTL App Wizard can be 
 installed by running AppWiz\setup80x.js (or setup90x.js or setup100x.js) program. The App Wizard generates code 
 in the stdafx.h file that allows use of ATL3 from the Platform SDK. That code is 
-used if WTL_USE_SDK_ATL3 is defined, so you can comment the line in stdafx.h 
-that defines WTL_USE_SDK_ATL3 to use the project with different versions of 
+used if _WTL_SUPPORT_EXTERNAL_ATL is defined, so you can comment the line in stdafx.h 
+that defines _WTL_SUPPORT_EXTERNAL_ATL to use the project with different versions of 
 Visual C++ or ATL.</font></p>
 <p style=margin:0in>&nbsp;</p>
 <p style=margin:0in><font face="Arial" size="2">Note that Release builds will 
