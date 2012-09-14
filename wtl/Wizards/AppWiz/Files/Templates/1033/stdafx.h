@@ -28,6 +28,7 @@
 
 // Support for VC++ Express & external ATL
 #ifdef _WTL_SUPPORT_EXTERNAL_ATL
+  #define ATL_NO_LEAN_AND_MEAN
   #include <atldef.h>
 
   #if (_ATL_VER < 0x0800)
