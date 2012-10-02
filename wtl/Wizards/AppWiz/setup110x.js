@@ -86,7 +86,7 @@ function main()
 		}
 	}
 
-	var strDestFolder = FileSys.BuildPath(strValue, "Express\\vcprojects");
+	var strDestFolder = FileSys.BuildPath(strValue, "vcprojects_WDExpress");
 	if(bDebug)
 		WScript.Echo("Destination: " + strDestFolder);
 	if(!FileSys.FolderExists(strDestFolder))
